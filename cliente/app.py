@@ -7,6 +7,11 @@ from flask_cors import CORS, cross_origin
 from google.protobuf.json_format import MessageToJson
 from cliente.grpcCliente import MedicamentoCliente
 
+#pip install flask
+#pip install flask_cors
+#pip install grpc
+#pipenv install grpcio-tools grpcio googleapis-common-protos
+
 #flask es para servicios web de python
 app= Flask(__name__)
 
@@ -29,4 +34,10 @@ def getAll():#declaro una funcion getALl
     result =cliente.getAll() #del objeto cliente llamo al metodo getAll
     return MessageToJson(result) #muestro el resultado de lo que me devolvio get all
 
-
+@app.route("/insertType",methods={"POST"})
+@cross_origin()
+def insertType():
+    cliente = MedicamentoCliente()
+    result = cliente.insertType(request.json)
+    #return make_response("ok")
+    return MessageToJson(result)

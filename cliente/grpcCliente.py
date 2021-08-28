@@ -12,8 +12,8 @@ from google.protobuf.json_format import MessageToJson
 #creo el objeto MedicamenteoCliente que tiene 2 metodos
 class MedicamentoCliente(object):
     def __init__(self):  #inicializo el canal y apartir del stub traigo los servicios del proto
-        self.host='localhost'
-        self.server_port=5000
+        self.host='127.0.0.1'
+        self.server_port=50051
         self.channel =grpc.insecure_channel('{}:{}'.format(self.host,self.server_port))
         #self.channel =grpc.insecure_channel('localhost:50051')
         self.stub =service_grpc.MedicServiceStub(self.channel) #aca obtengo todos los servicios que declare en el proto
@@ -21,6 +21,13 @@ class MedicamentoCliente(object):
     def getAll(self): #genero un metodo que devuelve los resultado del servicio declarado en proto
         param = service_pb2.Empty() #inicializao param con el valor del mensaje empty
         return self.stub.GetAll(param) #llamo al servicio GetAll y le paso Empty (param)como esta declarado en el proto
+    
+    def insertType(self,tipoMedicamento):
+        pTipoMedicamento =service_pb2.TipoMedicamento(
+            id =tipoMedicamento ['id'],
+            nombre =tipoMedicamento['nombre']
+        )
+        return self.stub.InsertType(pTipoMedicamento)
 
 #Corro la app....
 if __name__ == '__main__': #inicializo la app del cliente  (creo) para ver en consola el resultado 

@@ -46,6 +46,13 @@ class MedicamentoCliente(object):
             nombre =tipoMedicamento['nombre']
         )
         return self.stub.RemoveType(pTipoMedicamento)
+    
+    def getByType(self, tipoMedicamento):
+        pTipoMedicamento =service_pb2.TipoMedicamento(
+            id =tipoMedicamento["id"],
+        )
+        return self.stub.GetByType(pTipoMedicamento)
+
 
 #Corro la app....
 if __name__ == '__main__': #inicializo la app del cliente  (creo) para ver en consola el resultado 
@@ -86,6 +93,13 @@ if __name__ == '__main__': #inicializo la app del cliente  (creo) para ver en co
     result = cliente.remove(removeParam) 
     print(MessageToJson(result)) #muestroi el resutlado
     
+
+    print ("--------------OBTENER MEDICAMENTOS POR TIPO MEDICAMENTO-----------------------")
+    tipoMed = {"id": 2, "nombre": "colirios"}
+
+    result = cliente.getByType(tipoMed) 
+    print(MessageToJson(result)) #muestroi el resutlado
+
 """    
 
 

@@ -74,17 +74,24 @@ server.addService(medProto.MedicService.service, {
     },
 
     Insert: async (call, callback) => {
-    const med = {
-        "codigo": call.request.codigo,
-        "nombre" : call.request.nombre,
-        "droga" : call.request.droga,
-        "idTipoMedicamento" : call.request.tipo.id  
+        const med = {
+            "codigo": call.request.codigo,
+            "nombre" : call.request.nombre,
+            "droga" : call.request.droga,
+            "idTipoMedicamento" : call.request.tipo.id  
         }
         callback(null, await MedicamentoModel.create(med) );
     },
 
-    GetByType: (call, callback) => {
-        /** FALTA IMPLEMENTAR METODO */
+    GetByType: async (call, callback) => {
+        const medicamentos = await MedicamentoModel.findAll({ 
+            where: {  /** ME TRAE TODOS LOS MEDICAMENTOS QUE TENGAN ASOCIADO UN TIPO_MEDICAMENTO CARGADO */
+                "$tipoMedicamento.cargado$" : true,
+                "$tipoMedicamento.id$" : call.request.id /** PARA VERIFICAR QUE SEA DEL MISMO TIPO DE MEDICAMENTO */
+            },
+            include: "tipoMedicamento"
+        });
+        callback( null, {medicamentos: medicamentos} );
     },
 
     GetByInitial: (call, callback) => {

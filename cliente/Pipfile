@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-grpcio-tools = "*"
-grpcio = "*"
-googleapis-common-protos = "*"
 flask = "*"
 flask-cors = "*"
+grpcio = "*"
+grpcio-tools = "*"
+googleapis-common-protos = "*"
 
 [dev-packages]
 

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11medicamento.proto\"\x07\n\x05\x45mpty\"\\\n\x0bMedicamento\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\r\n\x05\x64roga\x18\x03 \x01(\t\x12\x1e\n\x04tipo\x18\x04 \x01(\x0b\x32\x10.TipoMedicamento\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"\x1a\n\x07Inicial\x12\x0f\n\x07inicial\x18\x01 \x01(\t\"5\n\x0fMedicamentoList\x12\"\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x0c.Medicamento2\xa5\x02\n\x0cMedicService\x12$\n\x06GetAll\x12\x06.Empty\x1a\x10.MedicamentoList\"\x00\x12\x32\n\nInsertType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x12\x32\n\nRemoveType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12&\n\x06Insert\x12\x0c.Medicamento\x1a\x0c.Medicamento\"\x00\x12\x31\n\tGetByType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12,\n\x0cGetByInicial\x12\x08.Inicial\x1a\x10.MedicamentoList\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11medicamento.proto\"\x07\n\x05\x45mpty\"h\n\x0bMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\r\n\x05\x64roga\x18\x04 \x01(\t\x12\x1e\n\x04tipo\x18\x05 \x01(\x0b\x32\x10.TipoMedicamento\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"\x1a\n\x07Inicial\x12\x0f\n\x07inicial\x18\x01 \x01(\t\"5\n\x0fMedicamentoList\x12\"\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x0c.Medicamento2\xa5\x02\n\x0cMedicService\x12$\n\x06GetAll\x12\x06.Empty\x1a\x10.MedicamentoList\"\x00\x12\x32\n\nInsertType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x12\x32\n\nRemoveType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12&\n\x06Insert\x12\x0c.Medicamento\x1a\x0c.Medicamento\"\x00\x12\x31\n\tGetByType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12,\n\x0cGetByInicial\x12\x08.Inicial\x1a\x10.MedicamentoList\"\x00\x62\x06proto3'
 )
 
 
@@ -59,29 +59,36 @@ _MEDICAMENTO = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='codigo', full_name='Medicamento.codigo', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='id', full_name='Medicamento.id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='nombre', full_name='Medicamento.nombre', index=1,
+      name='codigo', full_name='Medicamento.codigo', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='droga', full_name='Medicamento.droga', index=2,
+      name='nombre', full_name='Medicamento.nombre', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='tipo', full_name='Medicamento.tipo', index=3,
-      number=4, type=11, cpp_type=10, label=1,
+      name='droga', full_name='Medicamento.droga', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tipo', full_name='Medicamento.tipo', index=4,
+      number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -99,7 +106,7 @@ _MEDICAMENTO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=30,
-  serialized_end=122,
+  serialized_end=134,
 )
 
 
@@ -113,8 +120,8 @@ _TIPOMEDICAMENTO = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='TipoMedicamento.id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -137,8 +144,8 @@ _TIPOMEDICAMENTO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=124,
-  serialized_end=169,
+  serialized_start=136,
+  serialized_end=181,
 )
 
 
@@ -169,8 +176,8 @@ _INICIAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=171,
-  serialized_end=197,
+  serialized_start=183,
+  serialized_end=209,
 )
 
 
@@ -201,8 +208,8 @@ _MEDICAMENTOLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=199,
-  serialized_end=252,
+  serialized_start=211,
+  serialized_end=264,
 )
 
 _MEDICAMENTO.fields_by_name['tipo'].message_type = _TIPOMEDICAMENTO
@@ -258,8 +265,8 @@ _MEDICSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=255,
-  serialized_end=548,
+  serialized_start=267,
+  serialized_end=560,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetAll',

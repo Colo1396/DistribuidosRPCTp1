@@ -1,7 +1,10 @@
+#para instalar el entorno virtual ejecutar -> pip3 install pipenv
+#entrar a la carpeta cliente y ejecutar -> pipenv shell
+#ahora instalo todas las dependencias del entorno virtual con -> pipenv install --ignore-pipfile
+
 import os,sys
 CURRENT_DIR =os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(CURRENT_DIR))
-
 
 import grpc 
 import medicamento_pb2 as service_pb2 
@@ -24,17 +27,66 @@ class MedicamentoCliente(object):
     
     def insertType(self,tipoMedicamento):
         pTipoMedicamento =service_pb2.TipoMedicamento(
-            id =tipoMedicamento ['id'],
             nombre =tipoMedicamento['nombre']
         )
         return self.stub.InsertType(pTipoMedicamento)
 
+    def insert(self, nuevoMedicamento ):
+        pNuevoMedicamento = service_pb2.Medicamento(
+            codigo = nuevoMedicamento["codigo"],
+            nombre = nuevoMedicamento["nombre"],
+            droga = nuevoMedicamento["droga"],
+            tipo = nuevoMedicamento["tipo"]
+        )
+        return self.stub.Insert(pNuevoMedicamento)
+    
+    def remove(self, tipoMedicamento):
+        pTipoMedicamento =service_pb2.TipoMedicamento(
+            id =tipoMedicamento["id"],
+            nombre =tipoMedicamento['nombre']
+        )
+        return self.stub.RemoveType(pTipoMedicamento)
+
 #Corro la app....
 if __name__ == '__main__': #inicializo la app del cliente  (creo) para ver en consola el resultado 
-    print("holis")
+    cliente = MedicamentoCliente()  #creo un objeto tipo MedicamentoCliente
+
+""" TESTEOS VARIOS
+
+    print ("------------LISTAR-------------------------")
     cliente = MedicamentoCliente()  #creo un objeto tipo MedicamentoCliente
     result = cliente.getAll()  #llamo al metodo para traer el listado .vacio en este caso
     print(MessageToJson(result)) #muestroi el resutlado
+
+
+    print ("--------------AGREGO TIPO MEDICAMENTO-----------------------")
+    insertTypeParam = {
+        "nombre": "quimicos"
+    }
+    result = cliente.insertType(insertTypeParam)  
+    print(MessageToJson(result)) #muestroi el resutlado
+
+
+    print ("--------------AGREGO NUEVO MEDICAMENTO-----------------------")
+    insertParam = {
+        "codigo": "44444",
+        "nombre" : "paracetamol",
+        "droga" : "analgesico",
+        "tipo" : {
+            "id" : 1,
+            "nombre" : "aerosoles"
+        }
+    }
+    result = cliente.insert(insertParam) 
+    print(MessageToJson(result)) #muestroi el resutlado
+
+    print ("--------------REMUEVO TIPO MEDICAMENTO-----------------------")
+    removeParam = {"id": 3, "nombre": "capsulas"}
+
+    result = cliente.remove(removeParam) 
+    print(MessageToJson(result)) #muestroi el resutlado
+    
+"""    
 
 
 

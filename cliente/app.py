@@ -8,7 +8,7 @@ from google.protobuf.json_format import MessageToJson
 from cliente.grpcCliente import MedicamentoCliente
 
 #pip install flask
-#pip install flask_cors
+#pip install  
 #pip install grpc
 #pipenv install grpcio-tools grpcio googleapis-common-protos
 
@@ -18,8 +18,8 @@ app= Flask(__name__)
 #deflaro la ruta
 @app.route('/')
 def hello():
-    #return "hello world"
-    return render_template('index.html')
+    return "hello world"
+    #return render_template('index.html')
 
 # descomentar la linea 20 y 21 para correr la app.py de forma local Flask para probar los endpoint
 #if __name__== '__main__':

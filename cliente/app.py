@@ -14,16 +14,13 @@ from cliente.grpcCliente import MedicamentoCliente
 
 #flask es para servicios web de python
 app= Flask(__name__)
+CORS(app)
 
 #deflaro la ruta
 @app.route('/')
 def hello():
     return "hello world"
     #return render_template('index.html')
-
-# descomentar la linea 20 y 21 para correr la app.py de forma local Flask para probar los endpoint
-#if __name__== '__main__':
-#   app.run(port =3000, debug =True)
 
 #-------------------------------------------
 #Aca creo el metodo get para poder llamar el servicio proto GetAll
@@ -41,3 +38,7 @@ def insertType():
     result = cliente.insertType(request.json)
     #return make_response("ok")
     return MessageToJson(result)
+
+# descomentar la linea 20 y 21 para correr la app.py de forma local Flask para probar los endpoint
+if __name__== '__main__':
+   app.run(port =3000, debug =True)

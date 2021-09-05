@@ -6,6 +6,7 @@
 const grpc = require("@grpc/grpc-js");
 const PROTO_PATH = "../proto/medicamento.proto";
 var protoLoader = require("@grpc/proto-loader");
+const Op = require('sequelize').Op;
 
 const {MedicamentoModel, TipoModel } =  require("./conexion"); //database MySQL con ORM(Sequalize)
 
@@ -94,8 +95,18 @@ server.addService(medProto.MedicService.service, {
         callback( null, {medicamentos: medicamentos} );
     },
 
-    GetByInitial: (call, callback) => {
-        /** FALTA IMPLEMENTAR METODO */
+    GetByInitial: async (call, callback) => {
+        const inicial = call.request.inicial;
+        const medicamentos = await MedicamentoModel.findAll({ 
+            where: {  /** ME TRAE TODOS LOS MEDICAMENTOS QUE TENGAN ASOCIADO UN TIPO_MEDICAMENTO CARGADO */
+                "$tipoMedicamento.cargado$" : true,
+                nombre: {
+                    [Op.like]: inicial + '%'
+                }
+            },
+            include: "tipoMedicamento"
+        });
+        callback( null, {medicamentos: medicamentos} );
     }
 });
 

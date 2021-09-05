@@ -36,7 +36,10 @@ class MedicamentoCliente(object):
             codigo = nuevoMedicamento["codigo"],
             nombre = nuevoMedicamento["nombre"],
             droga = nuevoMedicamento["droga"],
-            tipo = nuevoMedicamento["tipo"]
+            tipo = service_pb2.TipoMedicamento(
+                id = int(nuevoMedicamento["tipo"]["id"]),
+                nombre = nuevoMedicamento["tipo"]["nombre"]
+            )
         )
         return self.stub.Insert(pNuevoMedicamento)
     
@@ -50,8 +53,13 @@ class MedicamentoCliente(object):
     def getByType(self, tipoMedicamento):
         pTipoMedicamento =service_pb2.TipoMedicamento(
             id =tipoMedicamento["id"],
+            nombre = tipoMedicamento["nombre"]
         )
         return self.stub.GetByType(pTipoMedicamento)
+
+    def getTypes(self):
+        param = service_pb2.Empty()
+        return self.stub.GetTypes(param)
 
 
 #Corro la app....

@@ -15,6 +15,10 @@ message TipoMedicamento{
     string nombre = 2;
 }
 
+message TipoMedicamentoList{
+    repeated TipoMedicamento tipos = 1;
+}
+
 message Inicial{
     string inicial = 1;
 }
@@ -30,4 +34,5 @@ service MedicService{
     rpc Insert (Medicamento) returns (Medicamento) {}
     rpc GetByType (TipoMedicamento) returns (MedicamentoList) {}
     rpc GetByInicial (Inicial) returns (MedicamentoList) {}
+    rpc GetTypes (Empty) returns (TipoMedicamentoList) {}
 }

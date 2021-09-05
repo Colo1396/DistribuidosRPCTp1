@@ -19,24 +19,44 @@ CORS(app)
 #deflaro la ruta
 @app.route('/')
 def hello():
-    return "hello world"
-    #return render_template('index.html')
+    return render_template('index.html')
+
+cliente =MedicamentoCliente() #del archivo grpcCliente creo el objeto MedicamentoCliente()
 
 #-------------------------------------------
 #Aca creo el metodo get para poder llamar el servicio proto GetAll
 @app.route("/getAll",methods={"GET"}) #declaro el endpoint
 @cross_origin()
 def getAll():#declaro una funcion getALl
-    cliente =MedicamentoCliente() #del archivo grpcCliente creo el objeto MedicamentoCliente()
     result =cliente.getAll() #del objeto cliente llamo al metodo getAll
     return MessageToJson(result) #muestro el resultado de lo que me devolvio get all
 
 @app.route("/insertType",methods={"POST"})
 @cross_origin()
 def insertType():
-    cliente = MedicamentoCliente()
     result = cliente.insertType(request.json)
     #return make_response("ok")
+    return MessageToJson(result)
+
+@app.route("/insert", methods={"POST"})
+@cross_origin()
+def insert():
+    result = cliente.insert(request.json)
+    return MessageToJson(result)
+
+@app.route("/getByType", methods={"GET"})
+@cross_origin()
+def getByType():
+    tipo = {}
+    tipo["id"] = int(request.args.get('id'))
+    tipo["nombre"] = request.args.get('nombre')
+    result = cliente.getByType(tipo)
+    return MessageToJson(result)
+
+@app.route("/getTypes", methods={"GET"})
+@cross_origin()
+def getTypes():
+    result = cliente.getTypes()
     return MessageToJson(result)
 
 # descomentar la linea 20 y 21 para correr la app.py de forma local Flask para probar los endpoint

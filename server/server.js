@@ -70,9 +70,9 @@ server.addService(medProto.MedicService.service, {
         );
         const medicamentos = await MedicamentoModel.findAll({
             where: { /*ME TRAE TODOS LOS MEDICAMENTOS QUE TENGAN ASOCIADO UN TIPO_MEDICAMENTO  CARGADO*/
-                "$tipoMedicamento.cargado$" : true
+                "$tipo.cargado$" : true
             },
-            include: "tipoMedicamento"
+            include: "tipo"
         });
         callback(null, {medicamentos: medicamentos} )
     },
@@ -90,10 +90,10 @@ server.addService(medProto.MedicService.service, {
     GetByType: async (call, callback) => {
         const medicamentos = await MedicamentoModel.findAll({ 
             where: {  /** ME TRAE TODOS LOS MEDICAMENTOS QUE TENGAN ASOCIADO UN TIPO_MEDICAMENTO CARGADO */
-                "$tipoMedicamento.cargado$" : true,
-                "$tipoMedicamento.id$" : call.request.id /** PARA VERIFICAR QUE SEA DEL MISMO TIPO DE MEDICAMENTO */
+                "$tipo.cargado$" : true,
+                "$tipo.id$" : call.request.id /** PARA VERIFICAR QUE SEA DEL MISMO TIPO DE MEDICAMENTO */
             },
-            include: "tipoMedicamento"
+            include: "tipo"
         });
         callback( null, {medicamentos: medicamentos} );
     },
@@ -102,14 +102,24 @@ server.addService(medProto.MedicService.service, {
         const inicial = call.request.inicial;
         const medicamentos = await MedicamentoModel.findAll({ 
             where: {  /** ME TRAE TODOS LOS MEDICAMENTOS QUE TENGAN ASOCIADO UN TIPO_MEDICAMENTO CARGADO */
-                "$tipoMedicamento.cargado$" : true,
+                "$tipo.cargado$" : true,
                 nombre: {
                     [Op.like]: inicial + '%'
                 }
             },
-            include: "tipoMedicamento"
+            include: "tipo"
         });
         callback( null, {medicamentos: medicamentos} );
+    },
+
+    GetTypes: async (call, callback) => {
+        const tipos = await TipoModel.findAll({
+            where: {
+                "$cargado$" : true
+            }
+        });
+
+        callback( null, {tipos: tipos});
     }
 });
 

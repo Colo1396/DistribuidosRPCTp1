@@ -44,10 +44,13 @@ server.addService(medProto.MedicService.service, {
     GetAll: async (_, callback) => {
         const medicamentos = await MedicamentoModel.findAll({ 
             where: {  /** ME TRAE TODOS LOS MEDICAMENTOS QUE TENGAN ASOCIADO UN TIPO_MEDICAMENTO CARGADO */
-                "$tipoMedicamento.cargado$" : true
+                "$tipo.cargado$" : true
             },
-            include: "tipoMedicamento"
+            include: "tipo",
+            raw: true,
+            nest: true
         });
+
         callback( null, {medicamentos: medicamentos} );
     },
 

@@ -25,7 +25,7 @@ TipoModel.hasMany(MedicamentoModel, {
     });
 MedicamentoModel.belongsTo(TipoModel, {
     foreignKey: 'idTipoMedicamento',
-    as: 'tipoMedicamento'
+    as: 'tipo'
 });
 
 /** INICIALIZO EL MAPEO **/

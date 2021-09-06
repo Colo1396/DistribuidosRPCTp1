@@ -2,7 +2,7 @@ import os,sys
 CURRENT_DIR =os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(CURRENT_DIR))
 from flask import Flask,render_template
-from flask import Flask,request,jsonify,make_response,redirect
+from flask import Flask,request,jsonify,make_response,redirect 
 from flask_cors import CORS, cross_origin
 from google.protobuf.json_format import MessageToDict, MessageToJson
 from cliente.grpcCliente import MedicamentoCliente
@@ -83,6 +83,17 @@ def remove(id):
     result = cliente.remove(tipoBuscado) #le doy la baja logica
 
     return redirect('/tipoList') #refresco la vista 
+
+
+#traer medicamentos por letra inicial
+@app.route("/getByInicial" , methods={"GET"})
+@cross_origin()
+def getByInicial():
+    inicial = {
+        "letraInicial" : request.args.get("letraInicial")
+    }
+    result = cliente.GetByInicial(inicial)
+    return MessageToJson(result)
 
 
 # descomentar la linea 20 y 21 para correr la app.py de forma local Flask para probar los endpoint

@@ -108,4 +108,49 @@ function cargarTabla(med){
         row.appendChild(tipo);
         tabla.insertBefore(row, tabla.firstChild);
     }
+    cargarLetras(); //lleno la lista con las letras iniciales
 }
+
+
+ /** LISTADO POR INICIAL */
+ const abecedario = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+ const selectLetra = document.getElementById("filter-inicial");
+
+//cargo un listado con todo el abecedario para listar por letra inicial
+function cargarLetras(){
+    for(let i=0; i< abecedario.length ; i++ ){
+        const opcionLetra = document.createElement('option');
+        opcionLetra.value = abecedario[i];
+        opcionLetra.innerText = abecedario[i];
+
+        selectLetra.appendChild(opcionLetra);
+    }
+}
+
+function traerPorLetra(LetraInicial){
+    axios.get(endpoint + '/getByInicial', {
+        params: {
+            id: LetraInicial.id,
+            letraInicial: LetraInicial.letraInicial
+        }
+    }).then((response) => {
+        cargarTabla(response.data.medicamentos);
+    }).catch((err) => {
+        console.log(err);
+    });
+}
+
+//buscar medicamentos por letra inicial, actualizando la tabla 
+selectLetra.addEventListener("change", () => {
+    const tabla = document.getElementById('filas');
+    tabla.textContent = "";
+    if(selectLetra.selectedIndex){
+        const id =  selectLetra.value;
+        const letraInicial = selectLetra.options[selectLetra.selectedIndex].text;
+        const LetraInicial = { id: id, letraInicial : letraInicial};
+
+        traerPorLetra(LetraInicial);
+    } else {
+        traerTodos();
+    }
+});

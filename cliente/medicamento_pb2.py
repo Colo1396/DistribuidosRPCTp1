@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11medicamento.proto\"\x07\n\x05\x45mpty\"h\n\x0bMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\r\n\x05\x64roga\x18\x04 \x01(\t\x12\x1e\n\x04tipo\x18\x05 \x01(\x0b\x32\x10.TipoMedicamento\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"6\n\x13TipoMedicamentoList\x12\x1f\n\x05tipos\x18\x01 \x03(\x0b\x32\x10.TipoMedicamento\"\x1a\n\x07Inicial\x12\x0f\n\x07inicial\x18\x01 \x01(\t\"5\n\x0fMedicamentoList\x12\"\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x0c.Medicamento2\x82\x03\n\x0cMedicService\x12$\n\x06GetAll\x12\x06.Empty\x1a\x10.MedicamentoList\"\x00\x12\x32\n\nInsertType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x12\x32\n\nRemoveType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12&\n\x06Insert\x12\x0c.Medicamento\x1a\x0c.Medicamento\"\x00\x12\x31\n\tGetByType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12,\n\x0cGetByInicial\x12\x08.Inicial\x1a\x10.MedicamentoList\"\x00\x12*\n\x08GetTypes\x12\x06.Empty\x1a\x14.TipoMedicamentoList\"\x00\x12/\n\x07GetType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11medicamento.proto\"\x07\n\x05\x45mpty\"h\n\x0bMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\r\n\x05\x64roga\x18\x04 \x01(\t\x12\x1e\n\x04tipo\x18\x05 \x01(\x0b\x32\x10.TipoMedicamento\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"$\n\x0cLetraInicial\x12\x14\n\x0cletraInicial\x18\x01 \x01(\t\"6\n\x13TipoMedicamentoList\x12\x1f\n\x05tipos\x18\x01 \x03(\x0b\x32\x10.TipoMedicamento\"5\n\x0fMedicamentoList\x12\"\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x0c.Medicamento2\x87\x03\n\x0cMedicService\x12$\n\x06GetAll\x12\x06.Empty\x1a\x10.MedicamentoList\"\x00\x12\x32\n\nInsertType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x12\x32\n\nRemoveType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12&\n\x06Insert\x12\x0c.Medicamento\x1a\x0c.Medicamento\"\x00\x12\x31\n\tGetByType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12\x31\n\x0cGetByInicial\x12\r.LetraInicial\x1a\x10.MedicamentoList\"\x00\x12*\n\x08GetTypes\x12\x06.Empty\x1a\x14.TipoMedicamentoList\"\x00\x12/\n\x07GetType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x62\x06proto3'
 )
 
 
@@ -149,6 +149,38 @@ _TIPOMEDICAMENTO = _descriptor.Descriptor(
 )
 
 
+_LETRAINICIAL = _descriptor.Descriptor(
+  name='LetraInicial',
+  full_name='LetraInicial',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='letraInicial', full_name='LetraInicial.letraInicial', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=183,
+  serialized_end=219,
+)
+
+
 _TIPOMEDICAMENTOLIST = _descriptor.Descriptor(
   name='TipoMedicamentoList',
   full_name='TipoMedicamentoList',
@@ -176,40 +208,8 @@ _TIPOMEDICAMENTOLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=183,
-  serialized_end=237,
-)
-
-
-_INICIAL = _descriptor.Descriptor(
-  name='Inicial',
-  full_name='Inicial',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='inicial', full_name='Inicial.inicial', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=239,
-  serialized_end=265,
+  serialized_start=221,
+  serialized_end=275,
 )
 
 
@@ -240,8 +240,8 @@ _MEDICAMENTOLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=267,
-  serialized_end=320,
+  serialized_start=277,
+  serialized_end=330,
 )
 
 _MEDICAMENTO.fields_by_name['tipo'].message_type = _TIPOMEDICAMENTO
@@ -250,8 +250,8 @@ _MEDICAMENTOLIST.fields_by_name['medicamentos'].message_type = _MEDICAMENTO
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 DESCRIPTOR.message_types_by_name['Medicamento'] = _MEDICAMENTO
 DESCRIPTOR.message_types_by_name['TipoMedicamento'] = _TIPOMEDICAMENTO
+DESCRIPTOR.message_types_by_name['LetraInicial'] = _LETRAINICIAL
 DESCRIPTOR.message_types_by_name['TipoMedicamentoList'] = _TIPOMEDICAMENTOLIST
-DESCRIPTOR.message_types_by_name['Inicial'] = _INICIAL
 DESCRIPTOR.message_types_by_name['MedicamentoList'] = _MEDICAMENTOLIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -276,19 +276,19 @@ TipoMedicamento = _reflection.GeneratedProtocolMessageType('TipoMedicamento', (_
   })
 _sym_db.RegisterMessage(TipoMedicamento)
 
+LetraInicial = _reflection.GeneratedProtocolMessageType('LetraInicial', (_message.Message,), {
+  'DESCRIPTOR' : _LETRAINICIAL,
+  '__module__' : 'medicamento_pb2'
+  # @@protoc_insertion_point(class_scope:LetraInicial)
+  })
+_sym_db.RegisterMessage(LetraInicial)
+
 TipoMedicamentoList = _reflection.GeneratedProtocolMessageType('TipoMedicamentoList', (_message.Message,), {
   'DESCRIPTOR' : _TIPOMEDICAMENTOLIST,
   '__module__' : 'medicamento_pb2'
   # @@protoc_insertion_point(class_scope:TipoMedicamentoList)
   })
 _sym_db.RegisterMessage(TipoMedicamentoList)
-
-Inicial = _reflection.GeneratedProtocolMessageType('Inicial', (_message.Message,), {
-  'DESCRIPTOR' : _INICIAL,
-  '__module__' : 'medicamento_pb2'
-  # @@protoc_insertion_point(class_scope:Inicial)
-  })
-_sym_db.RegisterMessage(Inicial)
 
 MedicamentoList = _reflection.GeneratedProtocolMessageType('MedicamentoList', (_message.Message,), {
   'DESCRIPTOR' : _MEDICAMENTOLIST,
@@ -306,8 +306,8 @@ _MEDICSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=323,
-  serialized_end=709,
+  serialized_start=333,
+  serialized_end=724,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetAll',
@@ -364,7 +364,7 @@ _MEDICSERVICE = _descriptor.ServiceDescriptor(
     full_name='MedicService.GetByInicial',
     index=5,
     containing_service=None,
-    input_type=_INICIAL,
+    input_type=_LETRAINICIAL,
     output_type=_MEDICAMENTOLIST,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,

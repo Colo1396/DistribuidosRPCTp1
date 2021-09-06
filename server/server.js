@@ -92,20 +92,6 @@ server.addService(medProto.MedicService.service, {
         callback( null, {medicamentos: medicamentos} );
     },
 
-    GetByInitial: async (call, callback) => {
-        const inicial = call.request.inicial;
-        const medicamentos = await MedicamentoModel.findAll({ 
-            where: {  /** ME TRAE TODOS LOS MEDICAMENTOS QUE TENGAN ASOCIADO UN TIPO_MEDICAMENTO CARGADO */
-                "$tipo.cargado$" : true,
-                nombre: {
-                    [Op.like]: inicial + '%'
-                }
-            },
-            include: "tipo"
-        });
-        callback( null, {medicamentos: medicamentos} );
-    },
-
     GetTypes: async (call, callback) => {
         const tipos = await TipoModel.findAll({
             where: {
@@ -124,8 +110,31 @@ server.addService(medProto.MedicService.service, {
 
         });
         callback( null, tipo);
-    }
+    },
 
+    GetByInicial: async (call, callback) => {
+        const inicial = call.request.letraInicial;
+        const medicamentos = await MedicamentoModel.findAll({ 
+            where: {  /** ME TRAE TODOS LOS MEDICAMENTOS QUE TENGAN ASOCIADO UN TIPO_MEDICAMENTO CARGADO */
+                "$tipo.cargado$" : true,
+                [Op.or]: [  /** PARA TENER EN CUENTA LAS LETRAS TANTO EN MAYUSCULA COMO EN MINUSCULA */
+                    {
+                        nombre : {
+                            [Op.like]: inicial.toUpperCase() + '%'
+                        }
+                    },
+                    {
+                        nombre : {
+                            [Op.like]: inicial.toLowerCase() + '%'
+                        }
+                    }
+                ]
+            },
+            include: "tipo"
+        });
+        callback( null, {medicamentos: medicamentos} );
+    }
+    
 });
 
 server.bindAsync(

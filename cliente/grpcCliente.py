@@ -66,11 +66,24 @@ class MedicamentoCliente(object):
         )
         return self.stub.GetType(pTipoMedicamento)
 
+    def GetByInicial(self,inicial):
+        pInicial = service_pb2.LetraInicial(
+            letraInicial = inicial["letraInicial"]
+        )
+        return self.stub.GetByInicial(pInicial)
+
 
 #Corro la app....
 if __name__ == '__main__': #inicializo la app del cliente  (creo) para ver en consola el resultado 
     cliente = MedicamentoCliente()  #creo un objeto tipo MedicamentoCliente
 
+    print ("------------TRAER MEDICAMENTOS POR LETRA INICIAL---------------")
+    parametro = {
+        "id" : "h",
+        "letraInicial" : "h"
+    }
+    result = cliente.GetByInicial(parametro)  #llamo al metodo para traer el listado de los medicamentos que empicen con 'a'
+    print(MessageToJson(result)) #muestroi el resutlado
 
 """ TESTEOS VARIOS
 
@@ -121,6 +134,15 @@ if __name__ == '__main__': #inicializo la app del cliente  (creo) para ver en co
     }
     result = cliente.getType(prototipo)  #llamo al metodo para traer el listado .vacio en este caso
     print(result) #muestroi el resutlado
+
+
+    print ("------------TRAER MEDICAMENTOS POR LETRA INICIAL---------------")
+    parametro = {
+        "inicial" : "h"
+    }
+
+    result = cliente.getByInitial(parametro)  #llamo al metodo para traer el listado de los medicamentos que empicen con 'a'
+    print(MessageToJson(result)) #muestroi el resutlado
 
 """    
 

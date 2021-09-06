@@ -41,7 +41,7 @@ class MedicServiceStub(object):
                 )
         self.GetByInicial = channel.unary_unary(
                 '/MedicService/GetByInicial',
-                request_serializer=medicamento__pb2.Inicial.SerializeToString,
+                request_serializer=medicamento__pb2.LetraInicial.SerializeToString,
                 response_deserializer=medicamento__pb2.MedicamentoList.FromString,
                 )
         self.GetTypes = channel.unary_unary(
@@ -137,7 +137,7 @@ def add_MedicServiceServicer_to_server(servicer, server):
             ),
             'GetByInicial': grpc.unary_unary_rpc_method_handler(
                     servicer.GetByInicial,
-                    request_deserializer=medicamento__pb2.Inicial.FromString,
+                    request_deserializer=medicamento__pb2.LetraInicial.FromString,
                     response_serializer=medicamento__pb2.MedicamentoList.SerializeToString,
             ),
             'GetTypes': grpc.unary_unary_rpc_method_handler(
@@ -257,7 +257,7 @@ class MedicService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/MedicService/GetByInicial',
-            medicamento__pb2.Inicial.SerializeToString,
+            medicamento__pb2.LetraInicial.SerializeToString,
             medicamento__pb2.MedicamentoList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

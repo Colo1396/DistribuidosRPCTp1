@@ -84,11 +84,14 @@ function cargarTipos(id, tipos){
 }
 
 function cargarTabla(med){
+    med.sort((a,b)=>{
+        return b.id - a.id;  //para ordenarlos de forma ascendente por su id
+    });
     const tabla = document.getElementById('filas');
-    for(i in med){
+    for(let i=0; i< med.length; i++){
         const row = document.createElement('tr');
         const numero = document.createElement('td');
-        numero.innerHTML = med.length - i;
+        numero.innerHTML = med[i].id;
         const codigo = document.createElement('th');
         codigo.innerHTML = med[i].codigo;
         const nombre = document.createElement('td');

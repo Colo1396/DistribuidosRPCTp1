@@ -64,17 +64,11 @@ server.addService(medProto.MedicService.service, {
 
     RemoveType: async (call, callback) => {
         /*** REALIZO UNA BAJA LOGICA DEL TIPO ELEMENTO */
-        await TipoModel.update(
+        const tipo = await TipoModel.update(
             {cargado : false}, //le cambio el atributo de cargado a falso
             {where : {id : call.request.id } }
         );
-        const medicamentos = await MedicamentoModel.findAll({
-            where: { /*ME TRAE TODOS LOS MEDICAMENTOS QUE TENGAN ASOCIADO UN TIPO_MEDICAMENTO  CARGADO*/
-                "$tipo.cargado$" : true
-            },
-            include: "tipo"
-        });
-        callback(null, {medicamentos: medicamentos} )
+        callback(null, tipo )
     },
 
     Insert: async (call, callback) => {
@@ -120,7 +114,18 @@ server.addService(medProto.MedicService.service, {
         });
 
         callback( null, {tipos: tipos});
+    },
+
+    GetType: async (call, callback) => { /** Traigo un unico tipo producto */
+        const tipo = await TipoModel.findOne({
+            where:{
+                "$id$" : call.request.id
+            }
+
+        });
+        callback( null, tipo);
     }
+
 });
 
 server.bindAsync(

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11medicamento.proto\"\x07\n\x05\x45mpty\"h\n\x0bMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\r\n\x05\x64roga\x18\x04 \x01(\t\x12\x1e\n\x04tipo\x18\x05 \x01(\x0b\x32\x10.TipoMedicamento\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"6\n\x13TipoMedicamentoList\x12\x1f\n\x05tipos\x18\x01 \x03(\x0b\x32\x10.TipoMedicamento\"\x1a\n\x07Inicial\x12\x0f\n\x07inicial\x18\x01 \x01(\t\"5\n\x0fMedicamentoList\x12\"\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x0c.Medicamento2\xd1\x02\n\x0cMedicService\x12$\n\x06GetAll\x12\x06.Empty\x1a\x10.MedicamentoList\"\x00\x12\x32\n\nInsertType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x12\x32\n\nRemoveType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12&\n\x06Insert\x12\x0c.Medicamento\x1a\x0c.Medicamento\"\x00\x12\x31\n\tGetByType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12,\n\x0cGetByInicial\x12\x08.Inicial\x1a\x10.MedicamentoList\"\x00\x12*\n\x08GetTypes\x12\x06.Empty\x1a\x14.TipoMedicamentoList\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11medicamento.proto\"\x07\n\x05\x45mpty\"h\n\x0bMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\r\n\x05\x64roga\x18\x04 \x01(\t\x12\x1e\n\x04tipo\x18\x05 \x01(\x0b\x32\x10.TipoMedicamento\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"6\n\x13TipoMedicamentoList\x12\x1f\n\x05tipos\x18\x01 \x03(\x0b\x32\x10.TipoMedicamento\"\x1a\n\x07Inicial\x12\x0f\n\x07inicial\x18\x01 \x01(\t\"5\n\x0fMedicamentoList\x12\"\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x0c.Medicamento2\x82\x03\n\x0cMedicService\x12$\n\x06GetAll\x12\x06.Empty\x1a\x10.MedicamentoList\"\x00\x12\x32\n\nInsertType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x12\x32\n\nRemoveType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12&\n\x06Insert\x12\x0c.Medicamento\x1a\x0c.Medicamento\"\x00\x12\x31\n\tGetByType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12,\n\x0cGetByInicial\x12\x08.Inicial\x1a\x10.MedicamentoList\"\x00\x12*\n\x08GetTypes\x12\x06.Empty\x1a\x14.TipoMedicamentoList\"\x00\x12/\n\x07GetType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x62\x06proto3'
 )
 
 
@@ -307,7 +307,7 @@ _MEDICSERVICE = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=323,
-  serialized_end=660,
+  serialized_end=709,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetAll',
@@ -376,6 +376,16 @@ _MEDICSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_EMPTY,
     output_type=_TIPOMEDICAMENTOLIST,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetType',
+    full_name='MedicService.GetType',
+    index=7,
+    containing_service=None,
+    input_type=_TIPOMEDICAMENTO,
+    output_type=_TIPOMEDICAMENTO,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

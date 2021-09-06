@@ -35,4 +35,5 @@ service MedicService{
     rpc GetByType (TipoMedicamento) returns (MedicamentoList) {}
     rpc GetByInicial (Inicial) returns (MedicamentoList) {}
     rpc GetTypes (Empty) returns (TipoMedicamentoList) {}
+    rpc GetType(TipoMedicamento) returns (TipoMedicamento) {}
 }

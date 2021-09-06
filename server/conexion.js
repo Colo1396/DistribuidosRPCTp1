@@ -6,8 +6,8 @@ const tipoModel = require('./models/Tipo');
 
 /** cONFIGURO LA CONEXION PARA LA BD 
 Esto lo cambian poniendo sus parametros */
-const sequelize = new Sequelize("bennrlvakykbsfdqy0mi", "umf5hwldmy9temjq", "Xq4jEVlQNQMfga1gvuuj" ,{
-    host : "bennrlvakykbsfdqy0mi-mysql.services.clever-cloud.com",
+const sequelize = new Sequelize("farmacia_db", "root", "123456789" ,{
+    host : "localhost",
     port: "3306",
     dialect: "mysql"
 });

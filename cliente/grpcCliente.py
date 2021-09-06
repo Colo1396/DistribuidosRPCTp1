@@ -46,7 +46,6 @@ class MedicamentoCliente(object):
     def remove(self, tipoMedicamento):
         pTipoMedicamento =service_pb2.TipoMedicamento(
             id =tipoMedicamento["id"],
-            nombre =tipoMedicamento['nombre']
         )
         return self.stub.RemoveType(pTipoMedicamento)
     
@@ -61,10 +60,17 @@ class MedicamentoCliente(object):
         param = service_pb2.Empty()
         return self.stub.GetTypes(param)
 
+    def getType(self, tipoMedicamento):
+        pTipoMedicamento =service_pb2.TipoMedicamento(
+            id =tipoMedicamento["id"]
+        )
+        return self.stub.GetType(pTipoMedicamento)
+
 
 #Corro la app....
 if __name__ == '__main__': #inicializo la app del cliente  (creo) para ver en consola el resultado 
     cliente = MedicamentoCliente()  #creo un objeto tipo MedicamentoCliente
+
 
 """ TESTEOS VARIOS
 
@@ -107,6 +113,14 @@ if __name__ == '__main__': #inicializo la app del cliente  (creo) para ver en co
 
     result = cliente.getByType(tipoMed) 
     print(MessageToJson(result)) #muestroi el resutlado
+
+    
+    print ("------------TRAIGO UN UNICO TIPO MEDICAMENTO-------------------------")
+    prototipo = {
+        "id" : 3
+    }
+    result = cliente.getType(prototipo)  #llamo al metodo para traer el listado .vacio en este caso
+    print(result) #muestroi el resutlado
 
 """    
 

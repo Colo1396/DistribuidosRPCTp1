@@ -2,9 +2,9 @@ import os,sys
 CURRENT_DIR =os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(CURRENT_DIR))
 from flask import Flask,render_template
-from flask import Flask,request,jsonify,make_response
+from flask import Flask,request,jsonify,make_response,redirect
 from flask_cors import CORS, cross_origin
-from google.protobuf.json_format import MessageToJson
+from google.protobuf.json_format import MessageToDict, MessageToJson
 from cliente.grpcCliente import MedicamentoCliente
 
 #pip install flask
@@ -17,13 +17,20 @@ app= Flask(__name__)
 CORS(app)
 
 #deflaro la ruta
-@app.route('/')
-def hello():
-    return render_template('index.html')
+@app.route("/",methods={"GET"})
+@cross_origin()
+def home():
+    return redirect('/medicamentoList')
 
 cliente =MedicamentoCliente() #del archivo grpcCliente creo el objeto MedicamentoCliente()
 
 #-------------------------------------------
+@app.route("/medicamentoList",methods={"GET"}) #declaro el endpoint
+@cross_origin()
+def medicamentoList():#vista principal donde cargan los medicamentos
+    return render_template("index.html")
+
+
 #Aca creo el metodo get para poder llamar el servicio proto GetAll
 @app.route("/getAll",methods={"GET"}) #declaro el endpoint
 @cross_origin()
@@ -58,6 +65,25 @@ def getByType():
 def getTypes():
     result = cliente.getTypes()
     return MessageToJson(result)
+
+
+@app.route("/tipoList", methods={"GET"}) #vista donde se realizara el insert y remove para los tipos
+@cross_origin()
+def tipoList():
+    return render_template('tipoList.html')
+
+#eliminar un tipo (baja logica)
+@app.route("/remove/<int:id>") #obtengo el id del tipo por la ruta
+@cross_origin()
+def remove(id):
+    prototipo={ #creo un diccionario con el id obtenido para realizar la busqueda de dicho objeto en la BD
+        "id" : id
+    }
+    tipoBuscado = MessageToDict(cliente.getType(prototipo)) #me devuelve el objeto y lo convierto en un diccionario
+    result = cliente.remove(tipoBuscado) #le doy la baja logica
+
+    return redirect('/tipoList') #refresco la vista 
+
 
 # descomentar la linea 20 y 21 para correr la app.py de forma local Flask para probar los endpoint
 if __name__== '__main__':

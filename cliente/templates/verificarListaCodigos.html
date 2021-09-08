@@ -19,10 +19,6 @@
           <a class="navbar-brand">
             Farmacia
           </a>
-          <a class="navbar-brand" href="{{ url_for( 'medicamentoList') }}">
-            Medicamentos
-          </a>
-          <a class="navbar-brand" href="/getVerificacionesCodigosProductosEnBd">Verificación</a>
         </div>
       </nav>
     </header>
@@ -30,37 +26,30 @@
     <main class="d-flex flex-column">
       <div class="col-8 align-self-center mt-5">
         <table class="table">
-            <thead>
-                <tr>
-                    <th class="col-2"><input id="codigo" type="text" class="form-control" required></th>
-                    <td class="col-1"><a id="verificar" class="btn btn-primary w-100" required>Verificar</a></td>
-                </tr>
-    
-              </thead>
           <thead>
             <tr>
-              <th scope="col">Codigo producto</th>
+              <th scope="col">Codigo</th>
               <th scope="col">Prioritario</th>
-              <th scope="col">Dígito verificador correcto</th>
+              <th scope="col">Digito verificador correcto</th>
             </tr>
+ 
           </thead>
-          <tbody id="fila">
-            <tr>
-              <td id="codigoTd"></td>
-              <td id="prioritarioTd"></td>
-              <td id="digVerTd"></td>
-            </tr>
-          </tbody>         
+          <tbody id="filas">
+            {% for dato in verificacionCodigoProductoBd['verificacionCodigoProductoBd'] %}
+              <tr>
+                <td id="codigoTd">{{dato.medicamento}}</td>
+                <td id="prioritarioTd">{{dato.esPrioritario}}</td>
+                <td id="digVerTd">{{dato.digitoVerificadorCorrecto}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
         </table>
-        <p id="probando"></p>
       </div>
     </main>
 
     <footer class="p-4 text-center w-100 bg-primary text-white fixed-bottom"><h5>@Copyright</h5></footer>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='verificarCodigoIngresado.js') }}"></script>
   </body>
 </html>

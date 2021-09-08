@@ -115,7 +115,7 @@ def verificarCodigoIngresadoPost():
 @cross_origin()
 def getVerificacionesCodigosProductosEnBd():
     result = cliente.GetVerificacionesCodigosProductosEnBd()
-    return MessageToJson(result)    
+    return render_template('verificarListaCodigos.html', verificacionCodigoProductoBd = result)   
 
 # descomentar la linea 20 y 21 para correr la app.py de forma local Flask para probar los endpoint
 if __name__== '__main__':

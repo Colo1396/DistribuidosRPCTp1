@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+    <main class="d-flex flex-column">
+      <div class="col-8 align-self-center mt-5">
+        <table class="table" >
+          <thead align="center">
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Prioritario</th>
+              <th scope="col">Dígito verificador correcto</th>
+            </tr>
+          </thead>
+          <tbody id="filas" align="center">
+            {% for dato in verificacionCodigoProductoBd['verificacionCodigoProductoBd'] %}
+              <tr>
+                <td id="codigoTd">{{dato.medicamento.codigo}}</td>
+                {% if dato.esPrioritario %}
+                  <td id="prioritarioTd" style="color:green;">Sí</td>
+                {% else %}
+                  <td id="prioritarioTd" style="color:red;">No</td>
+                {% endif %}
+                {% if dato.digitoVerificadorCorrecto %}
+                  <td id="digVerTd" style="color:green;">Sí</td>
+                {% else %}
+                  <td id="digVerTd" style="color:red;">No</td>
+                {% endif %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main>
+{% endblock %}
+    

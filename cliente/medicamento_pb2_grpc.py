@@ -54,6 +54,16 @@ class MedicServiceStub(object):
                 request_serializer=medicamento__pb2.TipoMedicamento.SerializeToString,
                 response_deserializer=medicamento__pb2.TipoMedicamento.FromString,
                 )
+        self.GetVerificacionCodigoProducto = channel.unary_unary(
+                '/MedicService/GetVerificacionCodigoProducto',
+                request_serializer=medicamento__pb2.CodigoProducto.SerializeToString,
+                response_deserializer=medicamento__pb2.VerificacionCodigoProducto.FromString,
+                )
+        self.GetVerificacionesCodigosProductosEnBd = channel.unary_unary(
+                '/MedicService/GetVerificacionesCodigosProductosEnBd',
+                request_serializer=medicamento__pb2.Empty.SerializeToString,
+                response_deserializer=medicamento__pb2.ListVerificacionCodigoProductoBd.FromString,
+                )
 
 
 class MedicServiceServicer(object):
@@ -107,6 +117,18 @@ class MedicServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetVerificacionCodigoProducto(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetVerificacionesCodigosProductosEnBd(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MedicServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -149,6 +171,16 @@ def add_MedicServiceServicer_to_server(servicer, server):
                     servicer.GetType,
                     request_deserializer=medicamento__pb2.TipoMedicamento.FromString,
                     response_serializer=medicamento__pb2.TipoMedicamento.SerializeToString,
+            ),
+            'GetVerificacionCodigoProducto': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetVerificacionCodigoProducto,
+                    request_deserializer=medicamento__pb2.CodigoProducto.FromString,
+                    response_serializer=medicamento__pb2.VerificacionCodigoProducto.SerializeToString,
+            ),
+            'GetVerificacionesCodigosProductosEnBd': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetVerificacionesCodigosProductosEnBd,
+                    request_deserializer=medicamento__pb2.Empty.FromString,
+                    response_serializer=medicamento__pb2.ListVerificacionCodigoProductoBd.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -293,5 +325,39 @@ class MedicService(object):
         return grpc.experimental.unary_unary(request, target, '/MedicService/GetType',
             medicamento__pb2.TipoMedicamento.SerializeToString,
             medicamento__pb2.TipoMedicamento.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetVerificacionCodigoProducto(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/MedicService/GetVerificacionCodigoProducto',
+            medicamento__pb2.CodigoProducto.SerializeToString,
+            medicamento__pb2.VerificacionCodigoProducto.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetVerificacionesCodigosProductosEnBd(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/MedicService/GetVerificacionesCodigosProductosEnBd',
+            medicamento__pb2.Empty.SerializeToString,
+            medicamento__pb2.ListVerificacionCodigoProductoBd.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

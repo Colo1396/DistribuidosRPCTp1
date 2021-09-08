@@ -4,13 +4,21 @@ const medicamentoModel = require('./models/Medicamento');
 const Tipo = require('./models/Tipo');
 const tipoModel = require('./models/Tipo');
 
-/** cONFIGURO LA CONEXION PARA LA BD 
-Esto lo cambian poniendo sus parametros */
-const sequelize = new Sequelize("farmacia_db", "root", "123456789" ,{
+/** CONFIGURACIÓN CONEXION PARA LA BD */
+const sequelize = new Sequelize("bennrlvakykbsfdqy0mi", "umf5hwldmy9temjq", "Xq4jEVlQNQMfga1gvuuj",{
+    host : "bennrlvakykbsfdqy0mi-mysql.services.clever-cloud.com",
+    port: "3306",
+    dialect: "mysql"
+});
+
+/*CONFIGURACIÓN LOCAL*/
+/*
+const sequelize = new Sequelize("farmacia_db", "root", "toor" ,{
     host : "localhost",
     port: "3306",
     dialect: "mysql"
 });
+*/
 
  
 /*** REALIZO LOS MAPEOS DE LAS CLASES */

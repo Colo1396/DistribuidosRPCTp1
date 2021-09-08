@@ -14,16 +14,28 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-          <a class="navbar-brand">
-            Farmacia
-          </a>
-          <a class="navbar-brand" href="{{ url_for('tipoList') }}">
-            Tipos
-          </a>
+    <!-- NAVIGATION  -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand">Farmacia</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{{ url_for( 'medicamentoList') }}">Medicamentos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('tipoList') }}">Tipos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('getVerificacionesCodigosProductosEnBd')}}">Verificar códigos</a>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
     </header>
 
     <main class="d-flex flex-column">
@@ -63,11 +75,14 @@
       </div>
     </main>
 
-    <footer class="p-4 text-center w-100 bg-primary text-white fixed-bottom"><h5>@Copyright</h5></footer>
-
+    <!-- footer -->
+    <footer class="p-2 text-center w-100 bg-primary text-white fixed-bottom">
+      <p class="flow-text">UNLa DESARROLLO DE SOFTWARE EN SISTEMAS DISTRIBUIDOS - TP Llamado a Procedimiento Remoto (RPC) &copy; 2021 </p>
+    </footer>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  
     <script src="{{ url_for('static', filename='index.js') }}"></script>
   </body>
 </html>
+
+

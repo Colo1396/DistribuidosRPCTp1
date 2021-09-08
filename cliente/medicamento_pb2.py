@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11medicamento.proto\"\x07\n\x05\x45mpty\"h\n\x0bMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\r\n\x05\x64roga\x18\x04 \x01(\t\x12\x1e\n\x04tipo\x18\x05 \x01(\x0b\x32\x10.TipoMedicamento\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"$\n\x0cLetraInicial\x12\x14\n\x0cletraInicial\x18\x01 \x01(\t\"6\n\x13TipoMedicamentoList\x12\x1f\n\x05tipos\x18\x01 \x03(\x0b\x32\x10.TipoMedicamento\"5\n\x0fMedicamentoList\x12\"\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x0c.Medicamento2\x87\x03\n\x0cMedicService\x12$\n\x06GetAll\x12\x06.Empty\x1a\x10.MedicamentoList\"\x00\x12\x32\n\nInsertType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x12\x32\n\nRemoveType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12&\n\x06Insert\x12\x0c.Medicamento\x1a\x0c.Medicamento\"\x00\x12\x31\n\tGetByType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12\x31\n\x0cGetByInicial\x12\r.LetraInicial\x1a\x10.MedicamentoList\"\x00\x12*\n\x08GetTypes\x12\x06.Empty\x1a\x14.TipoMedicamentoList\"\x00\x12/\n\x07GetType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11medicamento.proto\"\x07\n\x05\x45mpty\"h\n\x0bMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\r\n\x05\x64roga\x18\x04 \x01(\t\x12\x1e\n\x04tipo\x18\x05 \x01(\x0b\x32\x10.TipoMedicamento\"-\n\x0fTipoMedicamento\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\"$\n\x0cLetraInicial\x12\x14\n\x0cletraInicial\x18\x01 \x01(\t\"6\n\x13TipoMedicamentoList\x12\x1f\n\x05tipos\x18\x01 \x03(\x0b\x32\x10.TipoMedicamento\"5\n\x0fMedicamentoList\x12\"\n\x0cmedicamentos\x18\x01 \x03(\x0b\x32\x0c.Medicamento\" \n\x0e\x43odigoProducto\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\"\x7f\n\x1aVerificacionCodigoProducto\x12\'\n\x0e\x63odigoProducto\x18\x01 \x01(\x0b\x32\x0f.CodigoProducto\x12\x15\n\resPrioritario\x18\x02 \x01(\x08\x12!\n\x19\x64igitoVerificadorCorrecto\x18\x03 \x01(\x08\"{\n\x1cVerificacionCodigoProductoBd\x12!\n\x0bmedicamento\x18\x01 \x01(\x0b\x32\x0c.Medicamento\x12\x15\n\resPrioritario\x18\x02 \x01(\x08\x12!\n\x19\x64igitoVerificadorCorrecto\x18\x03 \x01(\x08\"g\n ListVerificacionCodigoProductoBd\x12\x43\n\x1cverificacionCodigoProductoBd\x18\x01 \x03(\x0b\x32\x1d.VerificacionCodigoProductoBd2\xae\x04\n\x0cMedicService\x12$\n\x06GetAll\x12\x06.Empty\x1a\x10.MedicamentoList\"\x00\x12\x32\n\nInsertType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x12\x32\n\nRemoveType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12&\n\x06Insert\x12\x0c.Medicamento\x1a\x0c.Medicamento\"\x00\x12\x31\n\tGetByType\x12\x10.TipoMedicamento\x1a\x10.MedicamentoList\"\x00\x12\x31\n\x0cGetByInicial\x12\r.LetraInicial\x1a\x10.MedicamentoList\"\x00\x12*\n\x08GetTypes\x12\x06.Empty\x1a\x14.TipoMedicamentoList\"\x00\x12/\n\x07GetType\x12\x10.TipoMedicamento\x1a\x10.TipoMedicamento\"\x00\x12O\n\x1dGetVerificacionCodigoProducto\x12\x0f.CodigoProducto\x1a\x1b.VerificacionCodigoProducto\"\x00\x12T\n%GetVerificacionesCodigosProductosEnBd\x12\x06.Empty\x1a!.ListVerificacionCodigoProductoBd\"\x00\x62\x06proto3'
 )
 
 
@@ -244,15 +244,178 @@ _MEDICAMENTOLIST = _descriptor.Descriptor(
   serialized_end=330,
 )
 
+
+_CODIGOPRODUCTO = _descriptor.Descriptor(
+  name='CodigoProducto',
+  full_name='CodigoProducto',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='codigo', full_name='CodigoProducto.codigo', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=332,
+  serialized_end=364,
+)
+
+
+_VERIFICACIONCODIGOPRODUCTO = _descriptor.Descriptor(
+  name='VerificacionCodigoProducto',
+  full_name='VerificacionCodigoProducto',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='codigoProducto', full_name='VerificacionCodigoProducto.codigoProducto', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='esPrioritario', full_name='VerificacionCodigoProducto.esPrioritario', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='digitoVerificadorCorrecto', full_name='VerificacionCodigoProducto.digitoVerificadorCorrecto', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=366,
+  serialized_end=493,
+)
+
+
+_VERIFICACIONCODIGOPRODUCTOBD = _descriptor.Descriptor(
+  name='VerificacionCodigoProductoBd',
+  full_name='VerificacionCodigoProductoBd',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='medicamento', full_name='VerificacionCodigoProductoBd.medicamento', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='esPrioritario', full_name='VerificacionCodigoProductoBd.esPrioritario', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='digitoVerificadorCorrecto', full_name='VerificacionCodigoProductoBd.digitoVerificadorCorrecto', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=495,
+  serialized_end=618,
+)
+
+
+_LISTVERIFICACIONCODIGOPRODUCTOBD = _descriptor.Descriptor(
+  name='ListVerificacionCodigoProductoBd',
+  full_name='ListVerificacionCodigoProductoBd',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='verificacionCodigoProductoBd', full_name='ListVerificacionCodigoProductoBd.verificacionCodigoProductoBd', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=620,
+  serialized_end=723,
+)
+
 _MEDICAMENTO.fields_by_name['tipo'].message_type = _TIPOMEDICAMENTO
 _TIPOMEDICAMENTOLIST.fields_by_name['tipos'].message_type = _TIPOMEDICAMENTO
 _MEDICAMENTOLIST.fields_by_name['medicamentos'].message_type = _MEDICAMENTO
+_VERIFICACIONCODIGOPRODUCTO.fields_by_name['codigoProducto'].message_type = _CODIGOPRODUCTO
+_VERIFICACIONCODIGOPRODUCTOBD.fields_by_name['medicamento'].message_type = _MEDICAMENTO
+_LISTVERIFICACIONCODIGOPRODUCTOBD.fields_by_name['verificacionCodigoProductoBd'].message_type = _VERIFICACIONCODIGOPRODUCTOBD
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 DESCRIPTOR.message_types_by_name['Medicamento'] = _MEDICAMENTO
 DESCRIPTOR.message_types_by_name['TipoMedicamento'] = _TIPOMEDICAMENTO
 DESCRIPTOR.message_types_by_name['LetraInicial'] = _LETRAINICIAL
 DESCRIPTOR.message_types_by_name['TipoMedicamentoList'] = _TIPOMEDICAMENTOLIST
 DESCRIPTOR.message_types_by_name['MedicamentoList'] = _MEDICAMENTOLIST
+DESCRIPTOR.message_types_by_name['CodigoProducto'] = _CODIGOPRODUCTO
+DESCRIPTOR.message_types_by_name['VerificacionCodigoProducto'] = _VERIFICACIONCODIGOPRODUCTO
+DESCRIPTOR.message_types_by_name['VerificacionCodigoProductoBd'] = _VERIFICACIONCODIGOPRODUCTOBD
+DESCRIPTOR.message_types_by_name['ListVerificacionCodigoProductoBd'] = _LISTVERIFICACIONCODIGOPRODUCTOBD
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
@@ -297,6 +460,34 @@ MedicamentoList = _reflection.GeneratedProtocolMessageType('MedicamentoList', (_
   })
 _sym_db.RegisterMessage(MedicamentoList)
 
+CodigoProducto = _reflection.GeneratedProtocolMessageType('CodigoProducto', (_message.Message,), {
+  'DESCRIPTOR' : _CODIGOPRODUCTO,
+  '__module__' : 'medicamento_pb2'
+  # @@protoc_insertion_point(class_scope:CodigoProducto)
+  })
+_sym_db.RegisterMessage(CodigoProducto)
+
+VerificacionCodigoProducto = _reflection.GeneratedProtocolMessageType('VerificacionCodigoProducto', (_message.Message,), {
+  'DESCRIPTOR' : _VERIFICACIONCODIGOPRODUCTO,
+  '__module__' : 'medicamento_pb2'
+  # @@protoc_insertion_point(class_scope:VerificacionCodigoProducto)
+  })
+_sym_db.RegisterMessage(VerificacionCodigoProducto)
+
+VerificacionCodigoProductoBd = _reflection.GeneratedProtocolMessageType('VerificacionCodigoProductoBd', (_message.Message,), {
+  'DESCRIPTOR' : _VERIFICACIONCODIGOPRODUCTOBD,
+  '__module__' : 'medicamento_pb2'
+  # @@protoc_insertion_point(class_scope:VerificacionCodigoProductoBd)
+  })
+_sym_db.RegisterMessage(VerificacionCodigoProductoBd)
+
+ListVerificacionCodigoProductoBd = _reflection.GeneratedProtocolMessageType('ListVerificacionCodigoProductoBd', (_message.Message,), {
+  'DESCRIPTOR' : _LISTVERIFICACIONCODIGOPRODUCTOBD,
+  '__module__' : 'medicamento_pb2'
+  # @@protoc_insertion_point(class_scope:ListVerificacionCodigoProductoBd)
+  })
+_sym_db.RegisterMessage(ListVerificacionCodigoProductoBd)
+
 
 
 _MEDICSERVICE = _descriptor.ServiceDescriptor(
@@ -306,8 +497,8 @@ _MEDICSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=333,
-  serialized_end=724,
+  serialized_start=726,
+  serialized_end=1284,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetAll',
@@ -386,6 +577,26 @@ _MEDICSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_TIPOMEDICAMENTO,
     output_type=_TIPOMEDICAMENTO,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetVerificacionCodigoProducto',
+    full_name='MedicService.GetVerificacionCodigoProducto',
+    index=8,
+    containing_service=None,
+    input_type=_CODIGOPRODUCTO,
+    output_type=_VERIFICACIONCODIGOPRODUCTO,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetVerificacionesCodigosProductosEnBd',
+    full_name='MedicService.GetVerificacionesCodigosProductosEnBd',
+    index=9,
+    containing_service=None,
+    input_type=_EMPTY,
+    output_type=_LISTVERIFICACIONCODIGOPRODUCTOBD,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

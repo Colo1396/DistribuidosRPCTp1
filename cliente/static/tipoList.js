@@ -43,7 +43,7 @@ function cargarTabla(type){
     
         const row_button = document.createElement("td");
         const button = document.createElement("a");
-        button.setAttribute("class" , "btn btn-primary w-100");
+        button.setAttribute("class" , "btn btn-danger");
         button.innerText = "Eliminar";
         button.setAttribute("href", "/remove/"+type[i].id);
 

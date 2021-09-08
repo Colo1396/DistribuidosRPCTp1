@@ -154,7 +154,6 @@ server.addService(medProto.MedicService.service, {
     GetVerificacionesCodigosProductosEnBd: async (call, callback) => {
         const medicamentos = await MedicamentoModel.findAll();
         const verificacionCodigoProducto = new Array();
-
         medicamentos.forEach(function(medicamento, index){
             dato = {
                 'medicamento' : medicamento,
@@ -163,7 +162,6 @@ server.addService(medProto.MedicService.service, {
             }
             verificacionCodigoProducto.push(dato);
         });
-        console.log(verificacionCodigoProducto);
         callback( null, {verificacionCodigoProductoBd: verificacionCodigoProducto} );
     }
 });

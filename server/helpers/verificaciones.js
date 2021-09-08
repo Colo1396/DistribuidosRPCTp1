@@ -23,7 +23,8 @@ function verificar(dato)
         var digitoVerificadorCorrecto = 0;
         arr.forEach(elemento => digitoVerificadorCorrecto += parseInt(elemento));
         //SI OBTENGO UN NÚMERO DE 2 DÍGITOS, VUELVO A SUMAR
-        if(digitoVerificadorCorrecto % 10 > 0){
+        if(digitoVerificadorCorrecto % 10 >= 0){
+            console.log(digitoVerificadorCorrecto % 10);
             var digitos = digitoVerificadorCorrecto.toString().split('');
             digitoVerificadorCorrecto = 0;
             digitos.forEach(digito => digitoVerificadorCorrecto += parseInt(digito));

@@ -27,6 +27,30 @@ message MedicamentoList{
     repeated Medicamento medicamentos = 1;
 }
 
+//Servirá para probar los métodos de verificación de un código que no esté en la bd
+message CodigoProducto{
+    string codigo = 1;
+}
+
+//Verificación del código del producto que no está en la bd
+message VerificacionCodigoProducto{
+    CodigoProducto codigoProducto = 1;
+    bool esPrioritario = 2;
+    bool digitoVerificadorCorrecto = 3;
+}
+
+//Verificación del código de un medicamento de la bd
+message VerificacionCodigoProductoBd{
+    Medicamento medicamento = 1;
+    bool esPrioritario = 2;
+    bool digitoVerificadorCorrecto = 3;
+}
+
+//Lista de los códigos de medicamentos de la bd con sus verificaciones
+message ListVerificacionCodigoProductoBd{
+    repeated VerificacionCodigoProductoBd verificacionCodigoProductoBd = 1;
+}
+
 service MedicService{
     rpc GetAll (Empty) returns (MedicamentoList) {}
     rpc InsertType (TipoMedicamento) returns (TipoMedicamento) {}
@@ -36,4 +60,6 @@ service MedicService{
     rpc GetByInicial (LetraInicial) returns (MedicamentoList) {}
     rpc GetTypes (Empty) returns (TipoMedicamentoList) {}
     rpc GetType(TipoMedicamento) returns (TipoMedicamento) {}
+    rpc GetVerificacionCodigoProducto(CodigoProducto) returns (VerificacionCodigoProducto){}
+    rpc GetVerificacionesCodigosProductosEnBd(Empty) returns (ListVerificacionCodigoProductoBd){}
 }

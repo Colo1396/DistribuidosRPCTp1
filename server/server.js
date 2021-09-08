@@ -7,6 +7,7 @@ const grpc = require("@grpc/grpc-js");
 const PROTO_PATH = "../proto/medicamento.proto";
 var protoLoader = require("@grpc/proto-loader");
 const Op = require('sequelize').Op;
+var verificaciones=require('./helpers/verificaciones');
 
 const {MedicamentoModel, TipoModel } =  require("./conexion"); //database MySQL con ORM(Sequalize)
 
@@ -133,8 +134,38 @@ server.addService(medProto.MedicService.service, {
             include: "tipo"
         });
         callback( null, {medicamentos: medicamentos} );
-    }
+    },
+
+    GetVerificacionCodigoProducto: async (call, callback) => {
+        const codigo = call.request.codigo;
+
+        console.log(codigo);
+        
+        const verificacionCodigoProducto = {
+            'codigo' : codigo,
+            'esPrioritario' : verificaciones.esPrioritario(codigo),
+            'digitoVerificadorCorrecto' : verificaciones.verificar(codigo),
+        };
+        console.log(verificacionCodigoProducto);
+
+        callback( null, {verificacionCodigoProducto: verificacionCodigoProducto} );
+    },
     
+    GetVerificacionesCodigosProductosEnBd: async (call, callback) => {
+        const medicamentos = await MedicamentoModel.findAll();
+        const verificacionCodigoProducto = new Array();
+
+        medicamentos.forEach(function(medicamento, index){
+            dato = {
+                'medicamento' : medicamento,
+                'esPrioritario' : verificaciones.esPrioritario(medicamento.codigo),
+                'digitoVerificadorCorrecto' : verificaciones.verificar(medicamento.codigo)
+            }
+            verificacionCodigoProducto.push(dato);
+        });
+        console.log(verificacionCodigoProducto);
+        callback( null, {verificacionCodigoProductoBd: verificacionCodigoProducto} );
+    }
 });
 
 server.bindAsync(

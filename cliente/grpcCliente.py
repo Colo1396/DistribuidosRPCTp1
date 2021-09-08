@@ -72,6 +72,18 @@ class MedicamentoCliente(object):
         )
         return self.stub.GetByInicial(pInicial)
 
+    def GetVerificacionCodigoProducto(self, codigoVerificar):
+        print(f"Codigo recibido {codigoVerificar}")
+        codigoAverificar = service_pb2.CodigoProducto(
+            codigo = codigoVerificar["codigo"]
+        )
+        print(f"Codigo recibido {codigoVerificar}")
+        print(f"Variable codigoAverificar {codigoAverificar}")
+        return self.stub.GetVerificacionCodigoProducto(codigoAverificar)
+
+    def GetVerificacionesCodigosProductosEnBd(self):
+        param = service_pb2.Empty()
+        return self.stub.GetVerificacionesCodigosProductosEnBd(param)
 
 #Corro la app....
 if __name__ == '__main__': #inicializo la app del cliente  (creo) para ver en consola el resultado 

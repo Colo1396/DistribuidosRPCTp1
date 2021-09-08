@@ -2,7 +2,7 @@ import os,sys
 CURRENT_DIR =os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(CURRENT_DIR))
 from flask import Flask,render_template
-from flask import Flask,request,jsonify,make_response,redirect 
+from flask import Flask,request,jsonify,make_response,redirect, url_for, flash, json
 from flask_cors import CORS, cross_origin
 from google.protobuf.json_format import MessageToDict, MessageToJson
 from cliente.grpcCliente import MedicamentoCliente
@@ -15,6 +15,8 @@ from cliente.grpcCliente import MedicamentoCliente
 #flask es para servicios web de python
 app= Flask(__name__)
 CORS(app)
+
+app.secret_key = ''
 
 #deflaro la ruta
 @app.route("/",methods={"GET"})
@@ -95,6 +97,25 @@ def getByInicial():
     result = cliente.GetByInicial(inicial)
     return MessageToJson(result)
 
+#Verificar código producto ingresado
+@app.route("/verificarCodigoIngresado", methods={"GET"})
+@cross_origin()
+def getVerificarCodigo():
+    return render_template('verificar.html')
+
+@app.route("/verificarCodigoIngresadoPost", methods={"POST"})
+@cross_origin()
+def verificarCodigoIngresadoPost():
+    result = cliente.GetVerificacionCodigoProducto(request.json)
+    print(result)
+    return MessageToJson(result) 
+
+#Verificar lista de códigos de medicamentos
+@app.route("/getVerificacionesCodigosProductosEnBd", methods={"GET"})
+@cross_origin()
+def getVerificacionesCodigosProductosEnBd():
+    result = cliente.GetVerificacionesCodigosProductosEnBd()
+    return MessageToJson(result)    
 
 # descomentar la linea 20 y 21 para correr la app.py de forma local Flask para probar los endpoint
 if __name__== '__main__':

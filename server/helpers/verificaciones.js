@@ -1,6 +1,8 @@
 function esPrioritario(dato)
 {
+    console.log(dato);
     var arrayDato = dato.split("-"); //SEPARO EL DATO POR EL -
+    console.log("DATOOOOO " + arrayDato);
     //COMPRUEBO QUE EL CÓDIGO ALFABÉTICO DEL PRODUCTO TENGA UNA LONGITUD IGUAL A 3 Y ES ALFABÉTICO
     if(arrayDato[0].length == 3 && arrayDato[0].match(/^[a-zA-Z]+$/)){
         //COMPRUEBO QUE EL CÓGIGO DE PRODUCTO COMIENCE CON LAS LETRAS P O W
